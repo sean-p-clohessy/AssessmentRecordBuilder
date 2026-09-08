@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101827"><title>Assessment Record Builder</title><link rel="stylesheet" href="styles.css"><script defer src="data/config.js"></script><script defer src="script.js"></script></head>
+<body>
+<header class="app-header"><div class="brand-mark" aria-hidden="true">AR</div><div><p class="eyebrow">CREATIVE PRACTICE · FORMATIVE ASSESSMENT</p><h1>Assessment Record Builder</h1></div><span class="version">V1</span></header>
+<main>
+<div id="builder">
+<section class="panel" aria-labelledby="details-heading"><div class="section-heading"><h2 id="details-heading"><span>01</span> Assessment details</h2><p>Start with the learner and project.</p></div>
+<form id="details" class="details-grid">
+<label>Learner name<input name="learner" autocomplete="off" placeholder="Learner’s full name"></label>
+<label>Assessor<input name="assessor" value="Sean Clohessy"></label>
+<label class="wide">Project title<input name="project" placeholder="Project or brief title"></label>
+<label>Feedback date<input name="feedbackDate" type="date"></label><label>Deadline<input name="deadline" type="date"></label><label>Submission date<input name="submitted" type="date"></label>
+<label>Extension approved?<select name="extension"><option>No</option><option>Yes</option></select></label>
+<label>Programme / context<select name="context" id="context"><option value="games">Games Design</option><option value="media">Media</option></select></label>
+<label class="wide">Programme title<input name="programme" placeholder="BTEC Level 3 Creative Media Practice / Art and Design Practice"></label><label>Assessment unit<input name="unit" placeholder="Unit title or reference"></label>
+</form></section>
+<section class="panel" aria-labelledby="criteria-heading"><div class="section-heading"><div><h2 id="criteria-heading"><span>02</span> Assessment criteria</h2><p>Select one grade for each criterion.</p></div><p id="progress" class="counter" aria-live="polite">0 / 5 criteria completed</p></div><div id="criteria"></div></section>
+<section class="panel" aria-labelledby="feedback-heading"><div class="section-heading"><div><h2 id="feedback-heading"><span>03</span> Development feedback <small>Optional</small></h2><p>Select the points to include in General Comments.</p></div><p id="feedback-count" class="counter" aria-live="polite">0 feedback points selected</p></div><div id="common-feedback"></div><div class="context-heading"><h3 id="context-heading">Games Design feedback</h3><p>Sample wording — editable in data/config.js</p></div><div id="context-feedback"></div></section>
+<div class="generate-bar"><button id="reset" class="secondary">Reset Assessment</button><div><p id="validation" role="alert"></p><button id="generate" class="primary">Generate Assessment <span aria-hidden="true">→</span></button></div></div>
+</div>
+<section id="output" aria-labelledby="preview-heading"><div class="output-toolbar"><div><p class="eyebrow">COMPLETED RECORD</p><h2 id="preview-heading">Assessment preview</h2></div><div id="output-actions" hidden><button data-copy="assessment">Copy Assessment Feedback</button><button data-copy="general">Copy General Comments</button><button data-copy="full">Copy Full Assessment</button><button id="print">Print / Save as PDF</button></div></div><p id="status" role="status"></p><div id="empty-preview">Your completed assessment will appear here.<br><span>Select all five grades, then generate your record.</span></div><article id="record" hidden></article></section>
+</main><footer>Assessment Record Builder · BTEC Level 3 Creative Practice<span>Works locally in your browser.</span></footer>
+</body></html>
