@@ -37,7 +37,7 @@ Use a unique ID across all feedback lists. Categories group automatically; array
 
 ## GitHub Pages
 
-Upload `index.html`, `styles.css`, `script.js` and the `data` folder to the repository root. In repository Settings → Pages, publish from the chosen branch’s root folder. Relative asset paths support project sites. This workspace has not been published to GitHub.
+Upload `index.html`, `styles.css`, `script.js` and the `data` folder to the repository root. In repository Settings → Pages, publish from the chosen branch’s root folder. Relative asset paths support project sites. Live site: https://sean-p-clohessy.github.io/AssessmentRecordBuilder/ . Publishing is configured from main / (root); pushes to main update the site.
 
 ## Verification
 
@@ -54,3 +54,4 @@ Checked in the browser:
 - No browser console errors during interaction checks; JavaScript syntax check passed.
 
 Print-only CSS is implemented, including hidden controls, A4 margins, table borders and page-break rules. The print button was invoked, but the in-app browser did not expose native print preview, so actual PDF pagination remains to be verified in Edge or Chrome. Reset cancellation was not independently verified because the in-app browser’s native confirmation handling was inconsistent.
+
