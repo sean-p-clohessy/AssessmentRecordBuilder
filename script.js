@@ -55,21 +55,51 @@
   form.addEventListener('input', invalidate);
   form.addEventListener('change', invalidate);
   form.addEventListener('submit', e => e.preventDefault());
+  $('general-comment').addEventListener('input', invalidate);
+  $('toggle-feedback').addEventListener('click', () => {
+    const open = $('toggle-feedback').getAttribute('aria-expanded') === 'true';
+    $('feedback-content').hidden = open;
+    $('toggle-feedback').setAttribute('aria-expanded', String(!open));
+    $('toggle-feedback').textContent = open ? 'Expand feedback' : 'Collapse feedback';
+  });
   function createRecord() {
     const details = Object.fromEntries(new FormData(form));
-    return { details, assessment: config.criteria.map(c => ({ criterion: `${c.id.toUpperCase()}: ${c.title}`, grade: grades[state.grades[c.id]], comment: c.grades[state.grades[c.id]] })), general: [config.introduction, ...[...config.feedback.common, ...config.feedback[state.context]].filter(i => state.feedback.has(i.id)).map(i => i.text)] };
+    return { details, assessment: config.criteria.map(c => ({ criterion: `${c.id.toUpperCase()}: ${c.title}`, grade: grades[state.grades[c.id]], comment: c.grades[state.grades[c.id]] })), general: [config.introduction, ...[...config.feedback.common, ...config.feedback[state.context]].filter(i => state.feedback.has(i.id)).map(i => i.text), ...details.generalComment.trim().split(/\n\s*\n/).filter(Boolean)] };
   }
   const formatValue = (key,value) => !value.trim() ? 'Not provided' : ['feedbackDate','deadline','submitted'].includes(key) ? new Date(value+'T12:00:00').toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) : value;
   function renderRecord(r) {
     $('record').innerHTML = `<h2>Formative Assessment Record</h2><h3>Assessment Details</h3><div class="record-details">${Object.entries(fields).map(([key,label]) => `<p><strong>${label}:</strong> ${escape(formatValue(key,r.details[key]))}</p>`).join('')}<p><strong>Context:</strong> ${r.details.context === 'games' ? 'Games Design' : 'Media'}</p></div><h3>Assessment</h3><table><thead><tr><th scope="col">Criteria</th><th scope="col">Grade</th><th scope="col">Assessment Comments</th></tr></thead><tbody>${r.assessment.map(a => `<tr><th scope="row">${escape(a.criterion)}</th><td>${a.grade}</td><td>${escape(a.comment)}</td></tr>`).join('')}</tbody></table><h3>General Comments</h3>${r.general.map(p => `<p>${escape(p)}</p>`).join('')}<h3>Student Reflection &amp; Actions</h3><div class="reflection-space"></div>`;
     $('record').hidden = false; $('empty-preview').hidden = true; $('output-actions').hidden = false;
   }
-  $('generate').addEventListener('click', () => {
+  function generateAssessment() {
     const missing = config.criteria.find(c => !state.grades[c.id]);
     if (missing) { $('validation').textContent = 'Please select a grade for all five assessment criteria.'; document.querySelector(`[data-criterion="${missing.id}"]`).focus(); return; }
     $('validation').textContent = ''; state.record = createRecord(); renderRecord(state.record);
     $('status').textContent = 'Assessment ready. Review below, then copy or print.';
+    return state.record;
+  }
+  $('generate').addEventListener('click', () => {
+    if (!generateAssessment()) return;
     $('output').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  $('generate-docx').addEventListener('click', async () => {
+    const record = generateAssessment();
+    if (!record) return;
+    const button = $('generate-docx'); button.disabled = true;
+    button.textContent = 'Preparing record…';
+    try {
+      const blob = await window.AssessmentDocx.create(record);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const name = [record.details.learner || 'Learner', record.details.project || 'Assessment'].join(' - ').replace(/[<>:"/\\|?*\x00-\x1f]/g, '').slice(0,150);
+      link.href = url; link.download = `${name} - Formative Record.docx`;
+      document.body.append(link); link.click(); link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      $('status').textContent = 'Word record downloaded. Open it to review or print.';
+    } catch (error) {
+      $('status').textContent = 'The Word record could not be generated. Please reload and try again. Your preview can still be copied.';
+      console.error('DOCX export failed:', error);
+    } finally { button.disabled = false; button.textContent = 'Generate Record (.docx)'; }
   });
   function exportText(r, part) {
     const assessment = r.assessment.map(a => `${a.criterion} — ${a.grade}\n${a.comment}`).join('\n\n');
@@ -98,6 +128,7 @@
     if (dirty && !window.confirm('Reset this assessment? Entered details, grades and feedback will be cleared.')) return;
     form.reset(); form.elements.feedbackDate.value = localDate(); defaults = new URLSearchParams(new FormData(form)).toString();
     state.grades = {}; state.feedback.clear(); state.context = 'games'; invalidate();
+    $('feedback-content').hidden = false; $('toggle-feedback').setAttribute('aria-expanded', 'true'); $('toggle-feedback').textContent = 'Collapse feedback';
     renderCriteria(); $('common-feedback').innerHTML = feedbackMarkup(config.feedback.common); renderContext(); counts();
     $('status').textContent = 'Assessment reset.'; form.elements.learner.focus();
   });

@@ -1,11 +1,12 @@
+@charset "UTF-8";
 :root {
   color-scheme:dark;
-  --bg:#0c1320;
-  --panel:#131e30;
-  --line:#2b3b53;
+  --bg:#0d1424;
+  --panel:#161f33;
+  --line:#35445f;
   --text:#eef3fa;
   --muted:#a8b7cc;
-  --blue:#8dbbff}
+  --blue:#38d9e6}
 * {
   box-sizing:border-box}
 body {
@@ -150,24 +151,25 @@ h3 {
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px}
 .grade-card {
-  --accent:#d9a4ad;
+  --accent:#ff6d9b;
   text-align:left;
   display:flex;
   flex-direction:column;
   gap:10px;
   padding:16px;
-  background:#172337;
+  background:#1b2740;
   border:1px solid #35435a;
   border-top:3px solid var(--accent);
   position:relative}
 .grade-card[data-grade=pass] {
-  --accent:#a5bdcf}
+  --accent:#ffae57}
 .grade-card[data-grade=merit] {
-  --accent:#8faef0}
+  --accent:#bdd648}
 .grade-card[data-grade=distinction] {
-  --accent:#bcaaec}
+  --accent:#5bd4a4}
 .grade-card strong {
   font-size:19px;
+  width:100%;
   color:var(--accent)}
 .grade-card .descriptor {
   font-size:14px;
@@ -178,10 +180,10 @@ h3 {
   background:#293c58;
   box-shadow:inset 0 0 0 1px var(--accent)}
 .grade-card[aria-pressed=true] strong:after {
-  content:'âœ“ Selected';
-  position:absolute;
-  right:12px;
-  top:17px;
+  content:'\2713  Selected';
+  float:right;
+  margin-left:10px;
+  padding-top:4px;
   font-size:12px;
   color:#fff}
 .feedback-group {
@@ -198,7 +200,7 @@ h3 {
 .feedback-card {
   font-size:14px;
   padding:11px 14px;
-  background:#172337;
+  background:#1b2740;
   text-align:left}
 .feedback-card:before {
   content:'+';
@@ -210,7 +212,7 @@ h3 {
   border-color:#8dbbff;
   color:#fff}
 .feedback-card[aria-pressed=true]:before {
-  content:'âœ“';
+  content:'\2713';
   color:#c5ddff}
 .context-heading {
   border-top:1px solid var(--line);
@@ -403,3 +405,18 @@ th {
   break-inside:avoid}
 }
 
+
+/* Shared bright accents follow Progress Tracking Builder; grades retain their own labels. */
+.eyebrow { color:var(--blue); font-weight:700; }
+.grade-card[aria-pressed=true] { background:color-mix(in srgb,var(--accent) 16%,#1b2740); }
+.feedback-card[aria-pressed=true] { border-color:#38d9e6; background:#193c50; }
+.primary { background:#38d9e6; border-color:#38d9e6; color:#0d1424; }
+.primary:hover { background:#80edf4; }
+.feedback-tools { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+#toggle-feedback { font-size:14px; }
+.comment-panel h2 { margin-bottom:10px; }
+.comment-panel label { margin-bottom:8px; }
+textarea { width:100%; resize:vertical; min-height:90px; font:inherit; padding:12px; background:#1b2740; color:var(--text); border:1px solid var(--line); border-radius:7px; }
+textarea:focus-visible { outline:3px solid #38d9e6; outline-offset:3px; }
+#record > p { white-space:pre-wrap; }
+@media(max-width:650px) { .feedback-tools { margin-top:12px; } .generate-bar { align-items:stretch; flex-direction:column-reverse; } .generate-bar > div { display:flex; flex-direction:column; gap:10px; } }
