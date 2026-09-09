@@ -10,6 +10,9 @@
   const form = $('details');
   const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const localDate = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+  form.elements.unit.innerHTML = config.units.map(unit => `<option>${escape(unit)}</option>`).join('');
+  function setProgrammeTitle() { form.elements.programme.value = `BTEC Level 3 Creative Media Practice in ${config.contexts[state.context]}`; }
+  setProgrammeTitle();
   form.elements.feedbackDate.value = localDate();
   let defaults = new URLSearchParams(new FormData(form)).toString();
   function renderCriteria() {
@@ -21,7 +24,7 @@
   function renderContext() {
     $('context-heading').textContent = `${state.context === 'games' ? 'Games Design' : 'Media'} feedback`;
     $('context-feedback').innerHTML = feedbackMarkup(config.feedback[state.context]);
-    document.querySelector('.context-heading p').hidden = !config.feedback[state.context].some(i => i.placeholder);
+
   }
   function invalidate() {
     if (state.record) $('status').textContent = 'Assessment changed. Generate again to update the preview and enable output.';
@@ -50,7 +53,7 @@
   });
   $('context').addEventListener('change', () => {
     config.feedback[state.context].forEach(i => state.feedback.delete(i.id));
-    state.context = $('context').value; renderContext(); counts(); invalidate();
+    state.context = $('context').value; setProgrammeTitle(); renderContext(); counts(); invalidate();
   });
   form.addEventListener('input', invalidate);
   form.addEventListener('change', invalidate);
@@ -126,7 +129,7 @@
   $('reset').addEventListener('click', () => {
     const dirty = Object.keys(state.grades).length || state.feedback.size || new URLSearchParams(new FormData(form)).toString() !== defaults;
     if (dirty && !window.confirm('Reset this assessment? Entered details, grades and feedback will be cleared.')) return;
-    form.reset(); form.elements.feedbackDate.value = localDate(); defaults = new URLSearchParams(new FormData(form)).toString();
+    form.reset(); state.context = 'games'; setProgrammeTitle(); form.elements.feedbackDate.value = localDate(); defaults = new URLSearchParams(new FormData(form)).toString();
     state.grades = {}; state.feedback.clear(); state.context = 'games'; invalidate();
     $('feedback-content').hidden = false; $('toggle-feedback').setAttribute('aria-expanded', 'true'); $('toggle-feedback').textContent = 'Collapse feedback';
     renderCriteria(); $('common-feedback').innerHTML = feedbackMarkup(config.feedback.common); renderContext(); counts();

@@ -420,3 +420,6 @@ textarea { width:100%; resize:vertical; min-height:90px; font:inherit; padding:1
 textarea:focus-visible { outline:3px solid #38d9e6; outline-offset:3px; }
 #record > p { white-space:pre-wrap; }
 @media(max-width:650px) { .feedback-tools { margin-top:12px; } .generate-bar { align-items:stretch; flex-direction:column-reverse; } .generate-bar > div { display:flex; flex-direction:column; gap:10px; } }
+
+/* Context feedback remains visible when common feedback is collapsed. */
+.panel > .context-heading { border-top:0; padding-top:0; margin-top:0; }

@@ -1,6 +1,6 @@
-// EDIT CONTENT HERE. Each feedback item needs a unique id, short label, category and full text.
-// Add/remove objects or change category to regroup cards. Grades use u, pass, merit, distinction.
-// PLACEHOLDERS: feedback.games and feedback.media are sample wording; replace text and set placeholder: false.
+// EDIT CONTENT HERE: unique id, short label, category and full text.
+// sourcePages records printed pages in the supplied Pearson specification.
+// New feedback is paraphrased guidance; use only where relevant to the brief.
 window.ASSESSMENT_CONFIG = {
   "criteria": [
     {
@@ -139,96 +139,330 @@ window.ASSESSMENT_CONFIG = {
         "label": "Proofread / spell-check",
         "category": "Professional Practice",
         "text": "Please take time to read through your work and use appropriate spell-checking tools before submission."
+      },
+      {
+        "id": "spec-audience",
+        "label": "Define your target audience",
+        "category": "Research & Analysis",
+        "text": "Identify who your work is intended for and investigate their needs. Use this evidence to explain your choices of content, style and platform.",
+        "sourcePages": [
+          20
+        ]
+      },
+      {
+        "id": "spec-sources",
+        "label": "Cross-check your research sources",
+        "category": "Research & Analysis",
+        "text": "Check important research findings against other credible sources and record your references. Explain how reliable evidence informs your decisions.",
+        "sourcePages": [
+          33
+        ]
+      },
+      {
+        "id": "spec-constraints",
+        "label": "Plan around the brief’s constraints",
+        "category": "Ideas & Development",
+        "text": "Identify the available time, resources, budget and technical limits before committing to an idea. Show how your proposal responds to these constraints and remains achievable.",
+        "sourcePages": [
+          20,
+          34
+        ]
+      },
+      {
+        "id": "spec-testing",
+        "label": "Act on testing and feedback",
+        "category": "Reflection & Process",
+        "text": "Seek feedback during development and test whether the work fulfils its intended purpose. Record the changes you make and explain how they address the issues identified.",
+        "sourcePages": [
+          21,
+          34
+        ]
+      },
+      {
+        "id": "spec-evaluation",
+        "label": "Evaluate outcomes against intentions",
+        "category": "Reflection & Process",
+        "text": "Compare your outcome with your original intentions and the needs of the audience. Use specific evidence to explain what worked, what did not and what you would improve.",
+        "sourcePages": [
+          26,
+          34
+        ]
+      },
+      {
+        "id": "spec-assets",
+        "label": "Organise and back up your files",
+        "category": "Professional Practice",
+        "text": "Use clear file names and an organised folder structure for source files, assets and exports. Keep backups and document versions so your work can be recovered and shared reliably.",
+        "sourcePages": [
+          25,
+          35
+        ]
+      },
+      {
+        "id": "spec-credits",
+        "label": "Check permissions and credit sources",
+        "category": "Professional Practice",
+        "text": "Identify the sources of third-party assets and check that their use is appropriate for your project. Keep permission or licence information with your research and credit the material in your submission.",
+        "sourcePages": [
+          25,
+          36
+        ]
+      },
+      {
+        "id": "spec-safety",
+        "label": "Document risks and safe working",
+        "category": "Professional Practice",
+        "text": "Identify hazards relevant to your production and record practical steps to manage them. Complete and update location or equipment planning where needed before carrying out the work.",
+        "sourcePages": [
+          25
+        ]
+      },
+      {
+        "id": "spec-access",
+        "label": "Improve readability and accessibility",
+        "category": "Communication",
+        "text": "Review how easily your intended audience can read, understand and use the work. Check language, legibility and presentation, then test and improve any barriers you identify.",
+        "sourcePages": [
+          24,
+          36
+        ]
+      },
+      {
+        "id": "spec-pitch",
+        "label": "Rehearse and clarify your pitch",
+        "category": "Communication",
+        "text": "Structure your presentation around the idea, audience, development and intended outcome. Rehearse your explanation, choose useful supporting visuals and prepare to answer questions about your decisions.",
+        "sourcePages": [
+          38
+        ]
+      },
+      {
+        "id": "spec-goals",
+        "label": "Set clear progression goals",
+        "category": "Personal Progression",
+        "text": "Research relevant courses or industry roles and compare their expectations with your current skills. Identify gaps and set achievable short-, medium- and long-term actions to address them.",
+        "sourcePages": [
+          32,
+          34
+        ]
+      },
+      {
+        "id": "spec-portfolio",
+        "label": "Tailor your portfolio or showreel",
+        "category": "Personal Progression",
+        "text": "Select and sequence work for your intended course, employer or role. Show the relevant range of skills, explain your contribution and make the presentation easy to navigate.",
+        "sourcePages": [
+          35,
+          37
+        ]
       }
     ],
     "games": [
       {
-        "id": "games-0",
-        "label": "Develop 3d modelling",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your 3d modelling further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-modelling",
+        "label": "Refine modelling and topology",
+        "category": "Assets & Environments",
+        "text": "Refine the shape, scale and construction of your models. Show your modelling decisions and check meshes against the intended use and technical constraints of the project.",
+        "sourcePages": [
+          22
+        ]
       },
       {
-        "id": "games-1",
-        "label": "Develop game engine implementation",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your game engine implementation further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-materials",
+        "label": "Develop textures and materials",
+        "category": "Assets & Environments",
+        "text": "Test how textures, materials and shaders affect the appearance of your assets. Refine their consistency and explain how your choices support the intended style and environment.",
+        "sourcePages": [
+          22
+        ]
       },
       {
-        "id": "games-2",
-        "label": "Develop gameplay testing",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your gameplay testing further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-optimisation",
+        "label": "Optimise assets for the target platform",
+        "category": "Assets & Environments",
+        "text": "Review asset complexity and production settings against the intended platform. Test performance and document adjustments that preserve the required visual quality.",
+        "sourcePages": [
+          22,
+          23
+        ]
       },
       {
-        "id": "games-3",
-        "label": "Develop level design",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your level design further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-engine",
+        "label": "Develop engine implementation",
+        "category": "Gameplay & Interaction",
+        "text": "Demonstrate how imported assets, scripts and interactive objects work together in the engine. Test their behaviour and explain how the implementation supports the experience you intend.",
+        "sourcePages": [
+          23
+        ]
       },
       {
-        "id": "games-4",
-        "label": "Develop asset optimisation",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your asset optimisation further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-mechanics",
+        "label": "Clarify gameplay goals and mechanics",
+        "category": "Gameplay & Interaction",
+        "text": "Make the player’s objectives, challenges and rewards clear. Test the core mechanics, controls and feedback, then use the results to improve how the experience plays.",
+        "sourcePages": [
+          23
+        ]
       },
       {
-        "id": "games-5",
-        "label": "Develop technical debugging",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your technical debugging further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "games-levels",
+        "label": "Test level layout and viewpoints",
+        "category": "Gameplay & Interaction",
+        "text": "Review the placement of cameras, characters and assets within your level. Test navigation and viewpoints with players and refine the layout to support the intended experience.",
+        "sourcePages": [
+          21,
+          23
+        ]
+      },
+      {
+        "id": "games-bugs",
+        "label": "Record and resolve gameplay bugs",
+        "category": "Testing & Development",
+        "text": "Keep a record of technical issues found during playtesting, including how to reproduce them. Prioritise fixes, retest the affected features and show evidence that the changes work.",
+        "sourcePages": [
+          21
+        ]
+      },
+      {
+        "id": "games-sound",
+        "label": "Use sound to support gameplay",
+        "category": "Gameplay & Interaction",
+        "text": "Develop sound cues and ambience that support the player’s actions and the intended atmosphere. Test levels and triggered events so important audio is clear and appropriately timed.",
+        "sourcePages": [
+          23
+        ]
       }
     ],
     "media": [
       {
-        "id": "media-0",
-        "label": "Develop camera work",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your camera work further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-camera",
+        "label": "Improve framing and camera choices",
+        "category": "Camera & Moving Image",
+        "text": "Choose framing, lens and camera placement deliberately to communicate your intention. Test alternatives and explain how your choices guide the audience’s attention.",
+        "sourcePages": [
+          22,
+          23
+        ]
       },
       {
-        "id": "media-1",
-        "label": "Develop editing",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your editing further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-continuity",
+        "label": "Strengthen continuity and sequencing",
+        "category": "Camera & Moving Image",
+        "text": "Review how your shots connect and communicate the action or narrative. Use suitable coverage and sequencing, and resolve distracting continuity or eyeline problems where continuity is intended.",
+        "sourcePages": [
+          22
+        ]
       },
       {
-        "id": "media-2",
-        "label": "Develop audio capture",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your audio capture further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-edit",
+        "label": "Refine editing pace and transitions",
+        "category": "Editing & Sound",
+        "text": "Review the timing, pace and transitions in your edit against the intended meaning and audience. Compare versions and refine cuts, titles and synchronised audio to improve clarity.",
+        "sourcePages": [
+          22
+        ]
       },
       {
-        "id": "media-3",
-        "label": "Develop lighting",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your lighting further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-audio",
+        "label": "Improve audio capture and levels",
+        "category": "Editing & Sound",
+        "text": "Test microphone choice and placement before recording. Monitor levels and background noise, then review the recordings for clarity and consistency before completing the edit.",
+        "sourcePages": [
+          23
+        ]
       },
       {
-        "id": "media-4",
-        "label": "Develop storyboarding",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your storyboarding further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-mix",
+        "label": "Balance dialogue, music and effects",
+        "category": "Editing & Sound",
+        "text": "Review the balance of dialogue, music, effects and ambience. Adjust levels and timing so important information remains clear and the sound supports the intended narrative or atmosphere.",
+        "sourcePages": [
+          23
+        ]
       },
       {
-        "id": "media-5",
-        "label": "Develop production paperwork",
-        "category": "Subject-specific feedback",
-        "placeholder": true,
-        "text": "Develop your production paperwork further. Document your process, seek feedback and show how you have improved the outcome."
+        "id": "media-lighting",
+        "label": "Control lighting and colour balance",
+        "category": "Lighting & Photography",
+        "text": "Test the direction and quality of natural or artificial light and check colour temperature or white balance. Refine your setup to achieve the intended mood and a consistent visual result.",
+        "sourcePages": [
+          22,
+          23
+        ]
+      },
+      {
+        "id": "media-exposure",
+        "label": "Control exposure and depth of field",
+        "category": "Lighting & Photography",
+        "text": "Experiment with aperture, shutter speed and ISO to achieve the intended exposure, motion and depth of field. Compare the results and explain why your final settings suit the image.",
+        "sourcePages": [
+          23
+        ]
+      },
+      {
+        "id": "media-composition",
+        "label": "Refine photographic composition",
+        "category": "Lighting & Photography",
+        "text": "Explore framing, viewpoint, balance, contrast and negative space in your photographs. Compare alternative compositions and refine the image to communicate your intention more clearly.",
+        "sourcePages": [
+          23,
+          24
+        ]
+      },
+      {
+        "id": "media-retouch",
+        "label": "Refine image editing and retouching",
+        "category": "Lighting & Photography",
+        "text": "Use image adjustments, layers and masks carefully to improve the image. Check edges, tonal consistency and visible editing artefacts, and explain how the changes support your intention.",
+        "sourcePages": [
+          23
+        ]
+      },
+      {
+        "id": "media-output",
+        "label": "Check resolution and export settings",
+        "category": "Production & Delivery",
+        "text": "Choose file type, resolution, aspect ratio and colour settings to suit the intended output. Where relevant, check frame rate and review the exported file on its target platform before submission.",
+        "sourcePages": [
+          22,
+          23
+        ]
+      },
+      {
+        "id": "media-storyboard",
+        "label": "Develop storyboards and shot planning",
+        "category": "Production & Delivery",
+        "text": "Translate your concept into a clear storyboard or visual plan before production. Use it to plan coverage and communicate your intentions, updating it as the project develops.",
+        "sourcePages": [
+          21,
+          25
+        ]
+      },
+      {
+        "id": "media-paperwork",
+        "label": "Keep production paperwork current",
+        "category": "Production & Delivery",
+        "text": "Prepare the production documents your project needs, such as shot lists, call sheets or a development document. Update them as plans change so contributors can work from accurate information.",
+        "sourcePages": [
+          25
+        ]
       }
     ]
   },
-  "introduction": "Thanks for submitting your work. I hope you will find the following feedback useful. Once we’ve discussed it please use the space titled ‘Student Reflections & Actions’ to reflect, and in your own words, write how you will use this feedback to inform future projects."
+  "introduction": "Thanks for submitting your work. I hope you will find the following feedback useful. Once we’ve discussed it please use the space titled ‘Student Reflections & Actions’ to reflect, and in your own words, write how you will use this feedback to inform future projects.",
+  "contexts": {
+    "games": "Games Design",
+    "media": "Media"
+  },
+  "units": [
+    "A1: Skills Development",
+    "A2: Creative Project",
+    "B1: Personal Progression",
+    "B2: Creative Industry Response"
+  ],
+  "feedbackSource": {
+    "title": "Pearson BTEC Level 3 National 540 Diploma/Extended Diploma in Creative Media Practice",
+    "issue": "Issue 3, May 2021",
+    "note": "New comments are teaching paraphrases, not additional assessment criteria. Page references are printed specification pages (PDF page = printed page + 4). Technical content is indicative; choose only relevant points."
+  }
 };
