@@ -22,7 +22,7 @@
     return [...new Set(items.map(i => i.category))].map(category => `<div class="feedback-group"><h3>${escape(category)}</h3><div class="feedback-grid">${items.filter(i => i.category === category).map(i => `<button type="button" class="feedback-card" data-feedback="${escape(i.id)}" aria-pressed="${state.feedback.has(i.id)}">${escape(i.label)}</button>`).join('')}</div></div>`).join('');
   }
   function renderContext() {
-    $('context-heading').textContent = `${state.context === 'games' ? 'Games Design' : 'Media'} feedback`;
+    $('context-heading').textContent = `${config.contexts[state.context]} feedback`;
     $('context-feedback').innerHTML = feedbackMarkup(config.feedback[state.context]);
 
   }
@@ -71,7 +71,7 @@
   }
   const formatValue = (key,value) => !value.trim() ? 'Not provided' : ['feedbackDate','deadline','submitted'].includes(key) ? new Date(value+'T12:00:00').toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) : value;
   function renderRecord(r) {
-    $('record').innerHTML = `<h2>Formative Assessment Record</h2><h3>Assessment Details</h3><div class="record-details">${Object.entries(fields).map(([key,label]) => `<p><strong>${label}:</strong> ${escape(formatValue(key,r.details[key]))}</p>`).join('')}<p><strong>Context:</strong> ${r.details.context === 'games' ? 'Games Design' : 'Media'}</p></div><h3>Assessment</h3><table><thead><tr><th scope="col">Criteria</th><th scope="col">Grade</th><th scope="col">Assessment Comments</th></tr></thead><tbody>${r.assessment.map(a => `<tr><th scope="row">${escape(a.criterion)}</th><td>${a.grade}</td><td>${escape(a.comment)}</td></tr>`).join('')}</tbody></table><h3>General Comments</h3>${r.general.map(p => `<p>${escape(p)}</p>`).join('')}<h3>Student Reflection &amp; Actions</h3><div class="reflection-space"></div>`;
+    $('record').innerHTML = `<h2>Formative Assessment Record</h2><h3>Assessment Details</h3><div class="record-details">${Object.entries(fields).map(([key,label]) => `<p><strong>${label}:</strong> ${escape(formatValue(key,r.details[key]))}</p>`).join('')}<p><strong>Context:</strong> ${config.contexts[r.details.context]}</p></div><h3>Assessment</h3><table><thead><tr><th scope="col">Criteria</th><th scope="col">Grade</th><th scope="col">Assessment Comments</th></tr></thead><tbody>${r.assessment.map(a => `<tr><th scope="row">${escape(a.criterion)}</th><td>${a.grade}</td><td>${escape(a.comment)}</td></tr>`).join('')}</tbody></table><h3>General Comments</h3>${r.general.map(p => `<p>${escape(p)}</p>`).join('')}<h3>Student Reflection &amp; Actions</h3><div class="reflection-space"></div>`;
     $('record').hidden = false; $('empty-preview').hidden = true; $('output-actions').hidden = false;
   }
   function generateAssessment() {
@@ -109,7 +109,7 @@
     const general = r.general.join('\n\n');
     if (part === 'assessment') return assessment;
     if (part === 'general') return general;
-    return `FORMATIVE ASSESSMENT RECORD\n\nASSESSMENT DETAILS\n${Object.entries(fields).map(([key,label]) => `${label}: ${formatValue(key,r.details[key])}`).join('\n')}\nContext: ${r.details.context === 'games' ? 'Games Design' : 'Media'}\n\nASSESSMENT\n\n${assessment}\n\nGENERAL COMMENTS\n\n${general}\n\nSTUDENT REFLECTION & ACTIONS\n\n`;
+    return `FORMATIVE ASSESSMENT RECORD\n\nASSESSMENT DETAILS\n${Object.entries(fields).map(([key,label]) => `${label}: ${formatValue(key,r.details[key])}`).join('\n')}\nContext: ${config.contexts[r.details.context]}\n\nASSESSMENT\n\n${assessment}\n\nGENERAL COMMENTS\n\n${general}\n\nSTUDENT REFLECTION & ACTIONS\n\n`;
   }
   async function copyText(text) {
     try { if (!navigator.clipboard?.writeText) throw new Error('Fallback'); await navigator.clipboard.writeText(text); }

@@ -68,7 +68,7 @@ Verified the production exporter with short, typical and long records, special c
 
 ## Specification-based feedback
 
-Source: Pearson BTEC Level 3 National 540 Diploma/Extended Diploma in Creative Media Practice, Issue 3 (May 2021), supplied PDF. New options paraphrase the teaching content on printed pages 20–26 and 32–38 (PDF pages 24–30 and 36–42). They are optional developmental guidance, not new grade descriptors. Photography appears under Media. Technical examples are indicative; select only those appropriate to the assignment.
+Source: Pearson BTEC Level 3 National 540 Diploma/Extended Diploma in Creative Media Practice, Issue 3 (May 2021), supplied PDF. New options paraphrase the teaching content on printed pages 20–26 and 32–38 (PDF pages 24–30 and 36–42). They are optional developmental guidance, not new grade descriptors. Photography has its own context and six relevant feedback options; existing Media options remain available. Technical examples are indicative; select only those appropriate to the assignment.
 
 | Context | Feedback option | Printed source pages |
 | --- | --- | --- |

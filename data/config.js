@@ -447,12 +447,73 @@ window.ASSESSMENT_CONFIG = {
           25
         ]
       }
+    ],
+    "photography": [
+      {
+        "id": "photography-camera",
+        "label": "Improve framing and camera choices",
+        "category": "Photography",
+        "text": "Choose framing, lens and camera placement deliberately to communicate your intention. Test alternatives and explain how your choices guide the audience’s attention.",
+        "sourcePages": [
+          22,
+          23
+        ]
+      },
+      {
+        "id": "photography-lighting",
+        "label": "Control lighting and colour balance",
+        "category": "Lighting & Photography",
+        "text": "Test the direction and quality of natural or artificial light and check colour temperature or white balance. Refine your setup to achieve the intended mood and a consistent visual result.",
+        "sourcePages": [
+          22,
+          23
+        ]
+      },
+      {
+        "id": "photography-exposure",
+        "label": "Control exposure and depth of field",
+        "category": "Lighting & Photography",
+        "text": "Experiment with aperture, shutter speed and ISO to achieve the intended exposure, motion and depth of field. Compare the results and explain why your final settings suit the image.",
+        "sourcePages": [
+          23
+        ]
+      },
+      {
+        "id": "photography-composition",
+        "label": "Refine photographic composition",
+        "category": "Lighting & Photography",
+        "text": "Explore framing, viewpoint, balance, contrast and negative space in your photographs. Compare alternative compositions and refine the image to communicate your intention more clearly.",
+        "sourcePages": [
+          23,
+          24
+        ]
+      },
+      {
+        "id": "photography-retouch",
+        "label": "Refine image editing and retouching",
+        "category": "Lighting & Photography",
+        "text": "Use image adjustments, layers and masks carefully to improve the image. Check edges, tonal consistency and visible editing artefacts, and explain how the changes support your intention.",
+        "sourcePages": [
+          23
+        ]
+      },
+      {
+        "id": "photography-output",
+        "label": "Check resolution and export settings",
+        "category": "Production & Delivery",
+        "text": "Choose file type, resolution, aspect ratio and colour settings to suit the intended output. Where relevant, check frame rate and review the exported file on its target platform before submission.",
+        "sourcePages": [
+          22,
+          23
+        ]
+      }
     ]
   },
   "introduction": "Thanks for submitting your work. I hope you will find the following feedback useful. Once we’ve discussed it please use the space titled ‘Student Reflections & Actions’ to reflect, and in your own words, write how you will use this feedback to inform future projects.",
   "contexts": {
     "games": "Games Design",
-    "media": "Media"
+    "media": "Media",
+    "photography": "Photography"
   },
   "units": [
     "A1: Skills Development",
