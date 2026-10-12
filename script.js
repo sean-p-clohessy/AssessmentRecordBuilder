@@ -8,6 +8,12 @@
   const fields = { learner: 'Learner name', assessor: 'Assessor', project: 'Project title', feedbackDate: 'Feedback date', deadline: 'Deadline', submitted: 'Submitted date', programme: 'Programme title', unit: 'Assessment unit', extension: 'Extension approved' };
   const state = { grades: {}, feedback: new Set(), context: 'games', record: null };
   const form = $('details');
+  $('theme-toggle').addEventListener('click', () => {
+    const dark = document.documentElement.dataset.theme !== 'dark';
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    $('theme-toggle').setAttribute('aria-pressed', String(dark));
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#161618' : '#f5f5f7';
+  });
   const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const localDate = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
   form.elements.unit.innerHTML = config.units.map(unit => `<option>${escape(unit)}</option>`).join('');
@@ -16,7 +22,7 @@
   form.elements.feedbackDate.value = localDate();
   let defaults = new URLSearchParams(new FormData(form)).toString();
   function renderCriteria() {
-    $('criteria').innerHTML = config.criteria.map(c => `<div class="criterion" role="group" aria-labelledby="${c.id}-heading"><div class="criterion-heading"><h3 id="${c.id}-heading"><span>${c.id.toUpperCase()}</span>${escape(c.title)}</h3><span class="selection-label" id="${c.id}-selection">Not graded</span></div><div class="grade-grid">${Object.entries(grades).map(([key,label]) => `<button type="button" class="grade-card" data-criterion="${c.id}" data-grade="${key}" aria-pressed="false"><strong>${label}</strong><span class="descriptor">${escape(c.grades[key])}</span></button>`).join('')}</div></div>`).join('');
+    $('criteria').innerHTML = config.criteria.map(c => `<div class="criterion" role="group" aria-labelledby="${c.id}-heading"><div class="criterion-heading"><h3 id="${c.id}-heading"><span>${c.id.toUpperCase()}</span> ${escape(c.title)}</h3><span class="selection-label" id="${c.id}-selection">Not graded</span></div><div class="grade-grid">${Object.entries(grades).map(([key,label]) => `<button type="button" class="grade-card" data-criterion="${c.id}" data-grade="${key}" aria-pressed="false"><strong>${label}</strong><span class="descriptor">${escape(c.grades[key])}</span></button>`).join('')}</div></div>`).join('');
   }
   function feedbackMarkup(items) {
     return [...new Set(items.map(i => i.category))].map(category => `<div class="feedback-group"><h3>${escape(category)}</h3><div class="feedback-grid">${items.filter(i => i.category === category).map(i => `<button type="button" class="feedback-card" data-feedback="${escape(i.id)}" aria-pressed="${state.feedback.has(i.id)}">${escape(i.label)}</button>`).join('')}</div></div>`).join('');
@@ -83,7 +89,7 @@
   }
   $('generate').addEventListener('click', () => {
     if (!generateAssessment()) return;
-    $('output').scrollIntoView({behavior:'smooth',block:'start'});
+    $('output').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'start'});
   });
   $('generate-docx').addEventListener('click', async () => {
     const record = generateAssessment();
